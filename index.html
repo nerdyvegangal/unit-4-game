@@ -5,39 +5,47 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous"
     ></script>
+    <link href="./assets/CSS/reset.css" rel="stylesheet" />
+    <link href="./assets/CSS/style.css" rel="stylesheet" />
+
   </head>
   <body>
-    <div>
-        <div id="targetScore"  >
-
+    <div class="container">
+        <div class="flexbox">
+            <div id="targetScore"> </div>
+            <div id="results">
+                <div>Wins: <span id="wins">0</span></div>
+                <div>Losses: <span id="losses">0</span></div>
+            </div>
+            <div class="clearfix"></div>
         </div>
-      <div
-        id="divBlue"
-        onclick="addBlue();"
-        style="width: 50px;height: 50px;  background-size: 100% 100%; 
-background-image:url('assets/images/blue.png')"
-      >
+        <div class="crystals">
+            <div class="crystal"
+                id="divBlue"
+                onclick="addBlue();"
+                style="background-image:url('assets/images/blue.png')"
+            >
+            </div>
+            <div class="crystal"
+                id="divGreen"
+                onclick="addGreen();"
+                style="background-image:url('assets/images/green.png')"
+            ></div>
+            <div class="crystal"
+                id="divRed"
+                onclick="addRed();"
+                style="background-image:url('assets/images/red.png')"
+            ></div>
+            <div class="crystal"
+                id="divYellow"
+                onclick="addYellow();"
+                style="background-image:url('assets/images/yellow.png')"
+            ></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="score-title">Your total score is:</div>
+        <div id="divScore"></div>
     </div>
-      <div
-        id="divGreen"
-        onclick="addGreen();"
-        style="width: 50px;height: 50px;  background-size: 100% 100%; background-image:url('assets/images/green.png')"
-      ></div>
-      <div
-        id="divRed"
-        onclick="addRed();"
-        style="    width: 50px;height: 50px;  background-size: 100% 100%;  background-image:url('assets/images/red.png')"
-      ></div>
-      <div
-        id="divYellow"
-        onclick="addYellow();"
-        style="width: 50px;height: 50px;  background-size: 100% 100%; background-image:url('assets/images/yellow.png')"
-      ></div>
-      <div id="divGameResult">
-
-      </div>
-    </div>
-    <div id="divScore"></div>
     <script src="./assets/javascript/game.js"></script>
   </body>
 </html>
