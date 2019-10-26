@@ -1,20 +1,113 @@
 <html>
-<head>
+  <head>
     <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-</head>
-<body>
-<div id ="mainDiv" onclick="addHi();">
-No content
-</div>
-<script>
-function    addHi(){
-alert($("#mainDiv").text());
-//.innerHtml("<p>Hi</p>");
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+        <div id="targetScore"  >
+
+        </div>
+      <div
+        id="divBlue"
+        onclick="addBlue();"
+        style="width: 50px;height: 50px;  background-size: 100% 100%; 
+background-image:url('assets/images/blue.png')"
+      >
+    </div>
+      <div
+        id="divGreen"
+        onclick="addGreen();"
+        style="width: 50px;height: 50px;  background-size: 100% 100%; background-image:url('assets/images/green.png')"
+      ></div>
+      <div
+        id="divRed"
+        onclick="addRed();"
+        style="    width: 50px;height: 50px;  background-size: 100% 100%;  background-image:url('assets/images/red.png')"
+      ></div>
+      <div
+        id="divYellow"
+        onclick="addYellow();"
+        style="width: 50px;height: 50px;  background-size: 100% 100%; background-image:url('assets/images/yellow.png')"
+      ></div>
+      <div id="divGameResult">
+
+      </div>
+    </div>
+    <div id="divScore"></div>
+    <script>
+      var targetScore;
+      var greenScore;
+      var blueScore;
+      var yellowScore;
+      var redScore;
+      var totalScore = 0;
+      setTargetScore19_120();
+
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function checkGameEnd(){
+          if (totalScore>targetScore)
+          {
+        
+          $("#divGameResult").text("You Lost");
+
+            }
+          if (totalScore==targetScore){
+            $("#divGameResult").text("You Won");
+          }
+
+      }
+      function printCurrentTotalScore() {
+        $("#divScore").text("Score:" + totalScore);
+      }
+
+      function addRed() {
+        totalScore = totalScore + redScore;
+        printCurrentTotalScore();
+        checkGameEnd();
+      }
+      function addYellow() {
+        totalScore = totalScore + yellowScore;
+        printCurrentTotalScore();
+        checkGameEnd();
 
     }
-</script>
-</body>
+      function addBlue() {
+        totalScore = totalScore + blueScore;
+        printCurrentTotalScore();
+        checkGameEnd();
+
+    }
+      function addGreen() {
+        totalScore = totalScore + greenScore;
+        printCurrentTotalScore();
+        checkGameEnd();
+
+    }
+
+      function setTargetScore19_120() {
+        targetScore = getRandomInt(19, 120);
+        $("#targetScore").text("Target Score: "+targetScore);
+
+        greenScore = getRandomInt(1, 12);
+        blueScore = getRandomInt(1, 12);
+        redScore = getRandomInt(1, 12);
+        yellowScore = getRandomInt(1, 12);
+        console.log("Red" + redScore);
+        console.log("Target" + targetScore);
+      }
+
+      // 1) set target score  (random number)
+      // 2) set target random number for each crystal
+      // 3  Ask user to click until score >= target score
+      // in each iteration: increment total score by the selectec crystal
+    </script>
+  </body>
 </html>
