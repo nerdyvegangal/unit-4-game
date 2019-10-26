@@ -4,6 +4,8 @@ var blueScore;
 var yellowScore;
 var redScore;
 var totalScore = 0;
+var wins = 0;
+var losses = 0;
 setTargetScore19_120();
 
 function getRandomInt(min, max) {
@@ -12,19 +14,21 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 function checkGameEnd(){
-    if (totalScore>targetScore)
-    {
-  
-    $("#divGameResult").text("You Lost");
+    if (totalScore >= targetScore) {
+        if (totalScore > targetScore)
+        {
+            ++losses;
+            $("#losses").text(losses);
 
-      }
-    if (totalScore==targetScore){
-      $("#divGameResult").text("You Won");
-    }
-
+        } else {
+            ++wins;
+            $("#wins").text(wins);
+        }
+        setTargetScore19_120();
+    }  
 }
 function printCurrentTotalScore() {
-  $("#divScore").text("Score:" + totalScore);
+  $("#divScore").text(totalScore);
 }
 
 function addRed() {
@@ -52,8 +56,10 @@ function addGreen() {
 }
 
 function setTargetScore19_120() {
+  totalScore = 0;
+  $("#divScore").text(totalScore);
   targetScore = getRandomInt(19, 120);
-  $("#targetScore").text("Target Score: "+targetScore);
+  $("#targetScore").text(targetScore);
 
   greenScore = getRandomInt(1, 12);
   blueScore = getRandomInt(1, 12);
